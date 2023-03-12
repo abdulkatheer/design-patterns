@@ -17,6 +17,7 @@
         <module>factory-method</module>
         <module>abstract-factory</module>
         <module>singleton</module>
+        <module>command</module>
     </modules>
 
     <properties>
