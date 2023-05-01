@@ -20,6 +20,7 @@
         <module>command</module>
         <module>adapter</module>
         <module>facade</module>
+        <module>template-method</module>
     </modules>
 
     <properties>
