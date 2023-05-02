@@ -1,4 +1,4 @@
-package io.abdul.example1;
+package io.abdul.iterator.example3;
 
 import java.util.Iterator;
 
@@ -14,21 +14,25 @@ public class Waitress {
     }
 
     public void printMenu() {
-        Iterator<MenuItem> pancakeIterator = pancakeHouseMenu.createIterator();
-        Iterator<MenuItem> dinerIterator = dinerMenu.createIterator();
-        Iterator<MenuItem> cafeIterator = cafeMenu.createIterator();
-
         System.out.println("MENU\n----\nBREAKFAST");
-        printMenu(pancakeIterator);
+        printMenu(pancakeHouseMenu);
         System.out.println("\nLUNCH");
-        printMenu(dinerIterator);
+        printMenu(dinerMenu);
         System.out.println("\nALL TIME");
-        printMenu(cafeIterator);
+        printMenu(cafeMenu);
     }
 
     private void printMenu(Iterator<MenuItem> iterator) {
         while (iterator.hasNext()) {
             MenuItem menuItem = iterator.next();
+            System.out.print(menuItem.getName() + ", ");
+            System.out.print(menuItem.getPrice() + " -- ");
+            System.out.println(menuItem.getDescription());
+        }
+    }
+
+    private void printMenu(Menu menu) {
+        for (MenuItem menuItem : menu) {
             System.out.print(menuItem.getName() + ", ");
             System.out.print(menuItem.getPrice() + " -- ");
             System.out.println(menuItem.getDescription());

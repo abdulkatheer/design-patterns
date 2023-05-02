@@ -1,4 +1,4 @@
-package io.abdul.structure1;
+package io.abdul.iterator.structure1;
 
 import java.util.List;
 

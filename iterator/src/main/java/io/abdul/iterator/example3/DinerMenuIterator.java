@@ -1,4 +1,4 @@
-package io.abdul.example1;
+package io.abdul.iterator.example3;
 
 import java.util.Iterator;
 

@@ -1,4 +1,4 @@
-package io.abdul.example1;
+package io.abdul.iterator.example3;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -40,8 +40,13 @@ public class PancakeHouseMenu implements Menu {
         return menuItems;
     }
 
-    public Iterator<MenuItem> createIterator() {
+    private Iterator<MenuItem> createIterator() {
         return menuItems.iterator();
+    }
+
+    @Override
+    public Iterator<MenuItem> iterator() {
+        return createIterator();
     }
 
     // other menu methods here

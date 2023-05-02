@@ -1,4 +1,4 @@
-package io.abdul.example2;
+package io.abdul.iterator.example2;
 
 import java.util.ArrayList;
 import java.util.List;

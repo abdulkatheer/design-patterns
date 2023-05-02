@@ -1,6 +1,5 @@
-package io.abdul.structure1;
+package io.abdul.iterator.structure1;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ConcreteIterator<T> implements Iterator<T> {

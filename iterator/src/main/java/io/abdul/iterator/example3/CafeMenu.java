@@ -1,4 +1,4 @@
-package io.abdul.example1;
+package io.abdul.iterator.example3;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -29,7 +29,12 @@ public class CafeMenu implements Menu {
         return menuItems;
     }
 
-    public Iterator<MenuItem> createIterator() {
+    private Iterator<MenuItem> createIterator() {
         return menuItems.values().iterator();
+    }
+
+    @Override
+    public Iterator<MenuItem> iterator() {
+        return createIterator();
     }
 }

@@ -1,4 +1,4 @@
-package io.abdul.example1;
+package io.abdul.iterator.example1;
 
 public class MenuTestDrive {
     public static void main(String args[]) {
