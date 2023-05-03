@@ -21,6 +21,7 @@
         <module>adapter</module>
         <module>facade</module>
         <module>template-method</module>
+        <module>state</module>
     </modules>
 
     <properties>
