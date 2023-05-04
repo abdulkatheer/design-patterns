@@ -24,6 +24,7 @@
         <module>state</module>
         <module>proxy</module>
         <module>combined-patterns</module>
+        <module>compound-patterns</module>
     </modules>
 
     <properties>
