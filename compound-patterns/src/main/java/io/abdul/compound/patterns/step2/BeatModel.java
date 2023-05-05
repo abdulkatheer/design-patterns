@@ -1,4 +1,4 @@
-package io.abdul.compound.patterns;
+package io.abdul.compound.patterns.step2;
 
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -8,13 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BeatModel implements BeatModelInterface, Runnable {
-    List<BeatObserver> beatObservers = new ArrayList<BeatObserver>();
-    List<BPMObserver> bpmObservers = new ArrayList<BPMObserver>();
-    int bpm = 90;
-    Thread thread;
-    boolean stop = false;
-    Clip clip;
+    private final List<BeatObserver> beatObservers = new ArrayList<>();
+    private final List<BPMObserver> bpmObservers = new ArrayList<>();
 
+    private int bpm = 90;
+    private boolean stop = false;
+    private Clip clip;
+
+    @Override
     public void initialize() {
         try {
             InputStream clipStream = this.getClass().getClassLoader().getResourceAsStream("clap.wav");
@@ -26,19 +27,21 @@ public class BeatModel implements BeatModelInterface, Runnable {
         }
     }
 
+    @Override
     public void on() {
         bpm = 90;
-        //notifyBPMObservers();
-        thread = new Thread(this);
+        Thread thread = new Thread(this);
         stop = false;
         thread.start();
     }
 
+    @Override
     public void off() {
         stopBeat();
         stop = true;
     }
 
+    @Override
     public void run() {
         while (!stop) {
             playBeat();
@@ -50,37 +53,28 @@ public class BeatModel implements BeatModelInterface, Runnable {
         }
     }
 
+    @Override
     public int getBPM() {
         return bpm;
     }
 
+    @Override
     public void setBPM(int bpm) {
         this.bpm = bpm;
         notifyBPMObservers();
     }
 
+    @Override
     public void registerObserver(BeatObserver o) {
         beatObservers.add(o);
     }
 
-    public void notifyBeatObservers() {
-        for (int i = 0; i < beatObservers.size(); i++) {
-            BeatObserver observer = (BeatObserver) beatObservers.get(i);
-            observer.updateBeat();
-        }
-    }
-
+    @Override
     public void registerObserver(BPMObserver o) {
         bpmObservers.add(o);
     }
 
-    public void notifyBPMObservers() {
-        for (int i = 0; i < bpmObservers.size(); i++) {
-            BPMObserver observer = (BPMObserver) bpmObservers.get(i);
-            observer.updateBPM();
-        }
-    }
-
+    @Override
     public void removeObserver(BeatObserver o) {
         int i = beatObservers.indexOf(o);
         if (i >= 0) {
@@ -88,6 +82,7 @@ public class BeatModel implements BeatModelInterface, Runnable {
         }
     }
 
+    @Override
     public void removeObserver(BPMObserver o) {
         int i = bpmObservers.indexOf(o);
         if (i >= 0) {
@@ -95,15 +90,26 @@ public class BeatModel implements BeatModelInterface, Runnable {
         }
     }
 
-    public void playBeat() {
+    private void playBeat() {
         clip.setFramePosition(0);
         clip.start();
     }
 
-    public void stopBeat() {
+    private void stopBeat() {
         clip.setFramePosition(0);
         clip.stop();
     }
 
+    private void notifyBPMObservers() {
+        for (BPMObserver observer : bpmObservers) {
+            observer.updateBPM(bpm);
+        }
+    }
+
+    private void notifyBeatObservers() {
+        for (BeatObserver observer : beatObservers) {
+            observer.updateBeat();
+        }
+    }
 }
 

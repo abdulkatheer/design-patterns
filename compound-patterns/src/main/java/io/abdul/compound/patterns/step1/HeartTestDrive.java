@@ -1,4 +1,4 @@
-package io.abdul.compound.patterns;
+package io.abdul.compound.patterns.step1;
 
 public class HeartTestDrive {
 

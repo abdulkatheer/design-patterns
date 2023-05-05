@@ -1,4 +1,4 @@
-package io.abdul.compound.patterns;
+package io.abdul.compound.patterns.step2;
 
 public interface ControllerInterface {
     void start();

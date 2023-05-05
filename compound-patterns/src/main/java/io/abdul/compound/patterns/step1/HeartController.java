@@ -1,8 +1,8 @@
-package io.abdul.compound.patterns;
+package io.abdul.compound.patterns.step1;
 
 public class HeartController implements ControllerInterface {
-    HeartModelInterface model;
-    DJView view;
+    private final HeartModelInterface model;
+    private final DJView view;
 
     public HeartController(HeartModelInterface model) {
         this.model = model;
@@ -13,18 +13,23 @@ public class HeartController implements ControllerInterface {
         view.disableStartMenuItem();
     }
 
+    @Override
     public void start() {
     }
 
+    @Override
     public void stop() {
     }
 
+    @Override
     public void increaseBPM() {
     }
 
+    @Override
     public void decreaseBPM() {
     }
 
+    @Override
     public void setBPM(int bpm) {
     }
 }
