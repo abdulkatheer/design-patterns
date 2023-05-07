@@ -26,6 +26,7 @@
         <module>combined-patterns</module>
         <module>compound-patterns</module>
         <module>builder</module>
+        <module>chain-of-responsibility</module>
     </modules>
 
     <properties>
